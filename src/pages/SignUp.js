@@ -11,32 +11,43 @@ const SignUp = () => {
 
     const icons = ['🐶', '😺', '🐮' , '🐷']
 
-    useEffect(() => {
-            if(password.length > 4){
+    const handlePass = (pass) => {
+
+            setPassword(pass)
+            
+            if(pass.length > 4){
                 validPass[0] = true
+                setValidPass(validPass)
             } else {
                 validPass[0] = false
+                setValidPass(validPass)
             }
 
-            if (password.search(/[A-Z]/) > -1){
+            if (pass.search(/[A-Z]/) > -1){
                 validPass[1] = true
+                setValidPass(validPass)
             } else {
                 validPass[1] = false
+                setValidPass(validPass)
             }
 
-            if (password.search(/[0-9]/) > -1){
+            if (pass.search(/[0-9]/) > -1){
                 validPass[2] = true
+                setValidPass(validPass)
             } else {
                 validPass[2] = false
+                setValidPass(validPass)
             }
 
-            if (password.search(/[!@#$%^&*()]/) > -1){
+            if (pass.search(/[!@#$%^&*()]/) > -1){
                 validPass[3] = true
+                setValidPass(validPass)
             } else {
                 validPass[3] = false
+                setValidPass(validPass)
             }
 
-    }, [password, validPass])
+    }
 
 
 
@@ -59,7 +70,7 @@ const SignUp = () => {
                         placeholder=' '
                         required
                         type="password"
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => handlePass(e.target.value)}
                         value={password}
                     />
                     <label htmlFor='password'>Password</label>
